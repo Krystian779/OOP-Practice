@@ -22,7 +22,20 @@ namespace OOP_Practice
         public EventType TypeOfEvent { get; set; }
 
         //Constructors
+
+        public Event()
+        {
+        }
+        public Event(string name, DateTime eventDate, List<Ticket> tickets, EventType typeOfEvent)
+        {
+            Name = name;
+            EventDate = eventDate;
+            Tickets = tickets;
+            TypeOfEvent = typeOfEvent;
+        }
+
         
+
         // Methods
         public int CompareTo(Event other)
         {
