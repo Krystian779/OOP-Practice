@@ -32,7 +32,7 @@ namespace OOP_Practice
 
         public override string ToString()
         {
-            return $"{Name}";
+            return $"{Name} - {Price:C} - [AVAILIBLE -{AvailibleTickets}]";
         }
     }
 }

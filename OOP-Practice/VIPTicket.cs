@@ -27,7 +27,7 @@ namespace OOP_Practice
 
         public override string ToString()
         {
-            return base.ToString();
+            return $"{Name}-{Price + AdditionalCost:C}-{AdditionalExtras}- [AVAILIBLE - {AvailibleTickets}]";
         }
     }
 }

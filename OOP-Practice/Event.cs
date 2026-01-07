@@ -42,5 +42,10 @@ namespace OOP_Practice
             return this.EventDate.CompareTo(other.EventDate);
         }
 
+        public override string ToString()
+        {
+            return $"{Name} - {EventDate.ToShortDateString()}";
+        }
+
     }
 }

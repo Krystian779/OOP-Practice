@@ -54,12 +54,75 @@ namespace OOP_Practice
             Event e2 = new Event("Electric Picnic", new DateTime(2025, 8, 29), e2tickets, Event.EventType.Music);
 
             events.Add(e1);
-            events.Add(e1);
+            events.Add(e2);
 
             lbxEvents.ItemsSource = events;
 
 
         }
 
+        private void lbxEvents_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+            // determine which event is selected
+
+            Event selectedEvent = lbxEvents.SelectedItem as Event;
+
+            // check its not null
+            if (selectedEvent != null)
+            {
+                // display tickets in the ticket listbox
+                lbxTickets.ItemsSource = null;
+                lbxTickets.ItemsSource = selectedEvent.Tickets;
+
+
+            }
+
+
+        }
+
+        private void btnBook_Click(object sender, RoutedEventArgs e)
+        {
+            // read amount required
+
+            int numberRequired = int.Parse(tbxNumberOfTickets.Text);
+
+            // check availibility
+
+            Ticket selectedTicket = lbxTickets.SelectedItem as Ticket;
+
+            // ensure not null
+
+            if (selectedTicket != null)
+            {
+                int availible = selectedTicket.AvailibleTickets;
+
+                if (availible >= numberRequired)
+                {
+                    // reduce number of tickets availible
+                    selectedTicket.AvailibleTickets -= numberRequired;
+                    MessageBox.Show($"Booking confirmed for {numberRequired} {selectedTicket.Name} tickets");
+
+                    //refresh display
+                    lbxTickets.ItemsSource = null;
+                    Event selectedEvent = lbxEvents.SelectedItem as Event;
+
+                    if (selectedEvent != null)
+                    {
+                        lbxTickets.ItemsSource = selectedEvent.Tickets;
+                    }
+
+                    else
+                    {
+                        MessageBox.Show($"Only {availible} tickets availible for {selectedTicket.Name} Please reduce number of tickets required");
+                    }
+                    
+                }
+            }
+
+            // if availible confirm booking and reduce number of tickets availible
+
+                // otherwise inform user ther are not enough
+        }
     }
 }
