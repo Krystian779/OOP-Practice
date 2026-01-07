@@ -13,6 +13,15 @@ namespace OOP_Practice
         public decimal AdditionalCost { get; set; }
 
         //Constructors
+        public VIPTicket() : base()
+        {
+            
+        }
+        public VIPTicket(string name, decimal price, int availibleTickets, string additionalExtras, decimal additionalCost):base(name,price,availibleTickets)
+        {
+            AdditionalExtras = additionalExtras;
+            AdditionalCost = additionalCost;
+        }
 
         // Methods
 

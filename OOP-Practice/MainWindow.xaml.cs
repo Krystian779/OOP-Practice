@@ -24,5 +24,13 @@ namespace OOP_Practice
         {
             InitializeComponent();
         }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Create Tickets
+            Ticket t1 = new Ticket("Early Bird",100m,100);
+            Ticket t2 = new Ticket("Platinum", 100m, 100);
+            VIPTicket t3 = new VIPTicket("A1", 100m, 100);
+        }
     }
 }

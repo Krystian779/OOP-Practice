@@ -15,6 +15,18 @@ namespace OOP_Practice
         public int AvailibleTickets { get; set; }
 
         //Constructors
+        public Ticket()
+        {
+            AvailibleTickets = 0;
+            Price = 0.0m;
+            Name = "Default Ticket";
+        }
+        public Ticket(string name, decimal price, int availibleTickets)
+        {
+            AvailibleTickets = availibleTickets;
+            Price = price;
+            Name = name;
+        }
 
         // Methods
 
