@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
 
         <Label Content="Events" Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <TextBox Name="tbxSearch" Text="Search" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100"/>
+        <TextBox Name="tbxSearch" Text="Search" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="100" GotFocus="tbxSearch_GotFocus" KeyUp="tbxSearch_KeyUp"/>
         <Label Content="Tickets" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center"/>
 
         <ListBox Name="lbxEvents" Grid.Row="1" Grid.Column="0" Margin="10" Grid.ColumnSpan="2" SelectionChanged="lbxEvents_SelectionChanged"/>

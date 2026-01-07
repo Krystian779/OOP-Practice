@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 
 namespace OOP_Practice
 {
-    public class VIPTicket:Ticket
+    public class VIPTicket : Ticket
     {
         // Properties
         public string AdditionalExtras { get; set; }
         public decimal AdditionalCost { get; set; }
 
         //Constructors
-        public VIPTicket() : base()
-        {
-            
-        }
-        public VIPTicket(string name, decimal price, int availibleTickets, string additionalExtras, decimal additionalCost):base(name,price,availibleTickets)
+        public VIPTicket() : this("") { }
+
+        public VIPTicket(string name) : this(name, 0m, 0, "", 0m) { }
+
+
+
+        public VIPTicket(string name, decimal price, int availibleTickets, string additionalExtras, decimal additionalCost) : base(name, price, availibleTickets)
         {
             AdditionalExtras = additionalExtras;
             AdditionalCost = additionalCost;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +22,7 @@ namespace OOP_Practice
     public partial class MainWindow : Window
     {
         List<Event> events = new List<Event>();
+        List<Event> filteredEvents = new List<Event>();
         public MainWindow()
         {
             InitializeComponent();
@@ -31,9 +33,9 @@ namespace OOP_Practice
             // Create Tickets
 
             #region Oasis
-            Ticket t1 = new Ticket("Early Bird",100m,100);
+            Ticket t1 = new Ticket("Early Bird", 100m, 100);
             Ticket t2 = new Ticket("Platinum", 100m, 100);
-            VIPTicket t3 = new VIPTicket("Ticket and Hotel Package", 150m, 100,"4* Hotel",100m);
+            VIPTicket t3 = new VIPTicket("Ticket and Hotel Package", 150m, 100, "4* Hotel", 100m);
 
             List<Ticket> e1tickets = new List<Ticket>() { t1, t2, t3 };
 
@@ -72,6 +74,7 @@ namespace OOP_Practice
             if (selectedEvent != null)
             {
                 // display tickets in the ticket listbox
+
                 lbxTickets.ItemsSource = null;
                 lbxTickets.ItemsSource = selectedEvent.Tickets;
 
@@ -100,10 +103,12 @@ namespace OOP_Practice
                 if (availible >= numberRequired)
                 {
                     // reduce number of tickets availible
+
                     selectedTicket.AvailibleTickets -= numberRequired;
                     MessageBox.Show($"Booking confirmed for {numberRequired} {selectedTicket.Name} tickets");
 
                     //refresh display
+
                     lbxTickets.ItemsSource = null;
                     Event selectedEvent = lbxEvents.SelectedItem as Event;
 
@@ -116,13 +121,62 @@ namespace OOP_Practice
                     {
                         MessageBox.Show($"Only {availible} tickets availible for {selectedTicket.Name} Please reduce number of tickets required");
                     }
-                    
+
                 }
             }
 
             // if availible confirm booking and reduce number of tickets availible
 
-                // otherwise inform user ther are not enough
+            // otherwise inform user ther are not enough
+        }
+
+        private void tbxSearch_GotFocus(object sender, RoutedEventArgs e)
+        {
+            tbxSearch.Clear();
+        }
+
+        private void tbxSearch_KeyUp(object sender, KeyEventArgs e)
+        {
+            // read text from screen
+
+            string searchText = tbxSearch.Text;
+
+            // if no text then display all events
+
+            if (string.IsNullOrEmpty(searchText))
+            {
+                lbxEvents.ItemsSource = null;
+                lbxEvents.ItemsSource = events;
+            }
+            else
+            {
+
+                // clear filtered list
+
+                filteredEvents.Clear();
+
+                // search for text in list of events   
+
+                foreach (Event ev in events)
+                {
+                    // if match found add to filtered list
+
+                    if (ev.Name.ToLower().Contains(searchText.ToLower()))
+                    {
+                        filteredEvents.Add(ev);
+                    }
+                }
+
+
+
+                // Display filtered list
+
+                lbxEvents.ItemsSource = null;
+                lbxEvents.ItemsSource = filteredEvents;
+
+            }
+
+
         }
     }
 }

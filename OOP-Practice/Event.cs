@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace OOP_Practice
 {
-    public class Event: IComparable<Event>
+    public class Event : IComparable<Event>
     {
         public enum EventType
         {
             Music,
             Comedy,
             Theatre,
-            
+
         }
         // Properties
         public string Name { get; set; }
@@ -34,7 +34,7 @@ namespace OOP_Practice
             TypeOfEvent = typeOfEvent;
         }
 
-        
+
 
         // Methods
         public int CompareTo(Event other)
